@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Google Sans', sans-serif;
             background-color: #111111;
@@ -121,7 +124,6 @@
         const planExecution = document.getElementById('plan-execution');
         const badgeStrategy = document.getElementById('badge-strategy');
         const badgeExecution = document.getElementById('badge-execution');
-        const plansSection = document.getElementById('plans-section');
 
         function selectPlan(plan) {
             // Reset both
@@ -144,9 +146,9 @@
                 planStrategy.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
                 planStrategy.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
                 
-                // Scroll on mobile
+                // Scroll to the specific plan on mobile
                 if (window.innerWidth < 768) {
-                    plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    planStrategy.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
 
             } else if (plan === 'execution') {
@@ -156,9 +158,9 @@
                 planExecution.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
                 planExecution.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
 
-                // Scroll on mobile
+                // Scroll to the specific plan on mobile
                 if (window.innerWidth < 768) {
-                    plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    planExecution.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }
         }
