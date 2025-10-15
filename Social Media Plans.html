@@ -71,7 +71,7 @@
         </div>
 
         <!-- Comparison Grid -->
-        <main class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <main id="plans-section" class="grid md:grid-cols-2 gap-8 md:gap-12">
             
             <!-- Plan 1: Strategic Partnership -->
             <div id="plan-strategy" class="plan-card bg-[#1F2937] p-8 rounded-2xl relative">
@@ -121,6 +121,7 @@
         const planExecution = document.getElementById('plan-execution');
         const badgeStrategy = document.getElementById('badge-strategy');
         const badgeExecution = document.getElementById('badge-execution');
+        const plansSection = document.getElementById('plans-section');
 
         function selectPlan(plan) {
             // Reset both
@@ -142,6 +143,11 @@
                 badgeStrategy.classList.remove('hidden');
                 planStrategy.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
                 planStrategy.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
+                
+                // Scroll on mobile
+                if (window.innerWidth < 768) {
+                    plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
 
             } else if (plan === 'execution') {
                 toggleExecution.classList.add('active');
@@ -149,6 +155,11 @@
                 badgeExecution.classList.remove('hidden');
                 planExecution.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
                 planExecution.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
+
+                // Scroll on mobile
+                if (window.innerWidth < 768) {
+                    plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         }
 
@@ -160,3 +171,4 @@
     </script>
 </body>
 </html>
+
