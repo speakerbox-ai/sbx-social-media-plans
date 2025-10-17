@@ -9,9 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body {
             font-family: 'Google Sans', sans-serif;
             background-color: #111111;
@@ -38,138 +35,144 @@
         }
         .feature-list li {
             position: relative;
-            padding-left: 28px;
+            padding-left: 32px;
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
         }
         .feature-list li::before {
-            content: '✓';
             position: absolute;
             left: 0;
-            color: #F97316;
+            font-size: 1.25rem;
             font-weight: bold;
+        }
+        .included::before {
+            content: '✓';
+            color: #F97316;
+        }
+        .excluded::before {
+            content: '✗';
+            color: #4B5563;
+        }
+        .excluded {
+            color: #6B7280;
+            text-decoration: line-through;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="container mx-auto px-4 py-12 md:py-20 max-w-5xl">
+    <div class="container mx-auto px-4 py-12 md:py-20 max-w-6xl">
 
         <!-- Header -->
         <header class="text-center mb-16">
             <img src="https://www.speakerbox.agency/_next/static/media/logoWhite.b1699314.svg" alt="Speakerbox Logo" class="h-12 mx-auto mb-4">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Find Your Perfect Social Media Plan</h1>
-            <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Choose the level of partnership that best fits your brand's needs.</p>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Social Media Plans</h1>
+            <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Choose the level of service that best fits your brand's needs.</p>
         </header>
 
         <!-- Interactive Toggle -->
         <div class="flex justify-center mb-12">
             <div class="bg-[#1F2937] p-1 rounded-full flex items-center space-x-1">
-                <button id="toggle-strategy" class="toggle-btn py-2 px-6 rounded-full text-sm font-semibold">
-                    I need a strategic partner
+                <button data-plan="basic" class="toggle-btn py-2 px-6 rounded-full text-sm font-semibold">
+                    Basic
                 </button>
-                <button id="toggle-execution" class="toggle-btn py-2 px-6 rounded-full text-sm font-semibold">
-                    I have a plan, I need a team
+                <button data-plan="standard" class="toggle-btn py-2 px-6 rounded-full text-sm font-semibold">
+                    Standard
+                </button>
+                 <button data-plan="premium" class="toggle-btn py-2 px-6 rounded-full text-sm font-semibold">
+                    Premium
                 </button>
             </div>
         </div>
 
         <!-- Comparison Grid -->
-        <main id="plans-section" class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <main id="plans-section" class="grid md:grid-cols-3 gap-8 md:gap-12">
             
-            <!-- Plan 1: Strategic Partnership -->
-            <div id="plan-strategy" class="plan-card bg-[#1F2937] p-8 rounded-2xl relative">
-                <div id="badge-strategy" class="hidden absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</div>
-                <h2 class="text-2xl font-bold text-white mb-2">Strategic Partnership</h2>
-                <p class="text-gray-400 mb-6">Best for brands that need a dedicated partner to lead their social media strategy from concept to execution.</p>
-                
+            <!-- Plan 1: Basic -->
+            <div id="plan-basic" class="plan-card bg-[#1F2937] p-8 rounded-2xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Basic</h2>
+                <p class="text-gray-400 mb-6">Essential creative execution for brands with a clear plan.</p>
                 <ul class="feature-list text-gray-300">
-                    <li>Monthly Campaign Planning</li>
-                    <li>Advanced Action Plans</li>
-                    <li>Campaign Name & Theme Suggestions</li>
-                    <li>Custom Typography & Visual Direction</li>
-                    <li>Full Creative Production (Posters & Stories)</li>
-                    <li>Campaign Video Production</li>
+                    <li class="included">Creative Posters & Basic Videos</li>
+                    <li class="included">Basic Project Plan Support</li>
+                    <li class="included">Daily Page Handling</li>
+                    <li class="excluded">Video Content Creation & Production</li>
+                    <li class="excluded">Advanced Video Production</li>
+                    <li class="excluded">Campaign Video Plans</li>
                 </ul>
-                <button class="w-full mt-8 p-3 text-lg font-bold rounded-lg bg-gray-600 hover:bg-gray-700 transition-colors duration-300">
-                    Get Started
-                </button>
+                <button class="w-full mt-8 p-3 text-lg font-bold rounded-lg bg-gray-600 hover:bg-gray-700 transition-colors duration-300">Get Started</button>
             </div>
 
-            <!-- Plan 2: Creative Execution -->
-            <div id="plan-execution" class="plan-card bg-[#1F2937] p-8 rounded-2xl relative">
-                <div id="badge-execution" class="hidden absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</div>
-                <h2 class="text-2xl font-bold text-white mb-2">Creative Execution</h2>
-                <p class="text-gray-400 mb-6">Perfect for brands that have a clear monthly plan and need a reliable creative team to bring it to life.</p>
-
+            <!-- Plan 2: Standard -->
+            <div id="plan-standard" class="plan-card bg-[#1F2937] p-8 rounded-2xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Standard</h2>
+                <p class="text-gray-400 mb-6">For growing brands that need proactive content and production.</p>
                 <ul class="feature-list text-gray-300">
-                    <li>Execution of Client-Provided Plan</li>
-                    <li>High-Quality Creative Production</li>
-                    <li>Video Production Based on Your Plan</li>
-                    <li>Consistent Daily & Weekly Posting</li>
-                    <li>Community Management Support</li>
-                    <li>Monthly Performance Reporting</li>
+                    <li class="included">Video Content Creation & Production</li>
+                    <li class="included">Creative Posters & Videos</li>
+                    <li class="included">Project Plan Support</li>
+                    <li class="included">Daily Page Handling</li>
+                    <li class="excluded">Advanced Video Production</li>
+                    <li class="excluded">Campaign Video Plans</li>
                 </ul>
-                <button class="w-full mt-8 p-3 text-lg font-bold rounded-lg bg-gray-600 hover:bg-gray-700 transition-colors duration-300">
-                    Get Started
-                </button>
+                <button class="w-full mt-8 p-3 text-lg font-bold rounded-lg bg-gray-600 hover:bg-gray-700 transition-colors duration-300">Get Started</button>
+            </div>
+
+            <!-- Plan 3: Premium -->
+            <div id="plan-premium" class="plan-card bg-[#1F2937] p-8 rounded-2xl">
+                <h2 class="text-2xl font-bold text-white mb-2">Premium</h2>
+                <p class="text-gray-400 mb-6">A full-service plan for market-leading brands.</p>
+                <ul class="feature-list text-gray-300">
+                    <li class="included">Advanced Video Production</li>
+                    <li class="included">Campaign Video Plans</li>
+                    <li class="included">Advanced Video Content Creation</li>
+                    <li class="included">Creative Posters, Videos & Collateral Design</li>
+                    <li class="included">Project Plan Support</li>
+                    <li class="included">Daily Page Handling</li>
+                </ul>
+                <button class="w-full mt-8 p-3 text-lg font-bold rounded-lg bg-gray-600 hover:bg-gray-700 transition-colors duration-300">Get Started</button>
             </div>
         </main>
 
     </div>
 
     <script>
-        const toggleStrategy = document.getElementById('toggle-strategy');
-        const toggleExecution = document.getElementById('toggle-execution');
-        const planStrategy = document.getElementById('plan-strategy');
-        const planExecution = document.getElementById('plan-execution');
-        const badgeStrategy = document.getElementById('badge-strategy');
-        const badgeExecution = document.getElementById('badge-execution');
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const planCards = document.querySelectorAll('.plan-card');
 
         function selectPlan(plan) {
-            // Reset both
-            toggleStrategy.classList.remove('active');
-            toggleExecution.classList.remove('active');
-            planStrategy.classList.remove('recommended');
-            planExecution.classList.remove('recommended');
-            badgeStrategy.classList.add('hidden');
-            badgeExecution.classList.add('hidden');
-            planStrategy.querySelector('button').classList.remove('bg-orange-600', 'hover:bg-orange-700');
-            planExecution.querySelector('button').classList.remove('bg-orange-600', 'hover:bg-orange-700');
-            planStrategy.querySelector('button').classList.add('bg-gray-600', 'hover:bg-gray-700');
-            planExecution.querySelector('button').classList.add('bg-gray-600', 'hover:bg-gray-700');
+            // Reset all
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            planCards.forEach(card => {
+                card.classList.remove('recommended');
+                card.querySelector('button').classList.remove('bg-orange-600', 'hover:bg-orange-700');
+                card.querySelector('button').classList.add('bg-gray-600', 'hover:bg-gray-700');
+            });
 
+            // Activate selected
+            const activeButton = document.querySelector(`[data-plan="${plan}"]`);
+            const activeCard = document.getElementById(`plan-${plan}`);
 
-            if (plan === 'strategy') {
-                toggleStrategy.classList.add('active');
-                planStrategy.classList.add('recommended');
-                badgeStrategy.classList.remove('hidden');
-                planStrategy.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
-                planStrategy.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
+            if (activeButton && activeCard) {
+                activeButton.classList.add('active');
+                activeCard.classList.add('recommended');
+                activeCard.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
+                activeCard.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
                 
-                // Scroll to the specific plan on mobile
+                // Scroll on mobile
                 if (window.innerWidth < 768) {
-                    planStrategy.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-
-            } else if (plan === 'execution') {
-                toggleExecution.classList.add('active');
-                planExecution.classList.add('recommended');
-                badgeExecution.classList.remove('hidden');
-                planExecution.querySelector('button').classList.add('bg-orange-600', 'hover:bg-orange-700');
-                planExecution.querySelector('button').classList.remove('bg-gray-600', 'hover:bg-gray-700');
-
-                // Scroll to the specific plan on mobile
-                if (window.innerWidth < 768) {
-                    planExecution.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    activeCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }
         }
 
-        toggleStrategy.addEventListener('click', () => selectPlan('strategy'));
-        toggleExecution.addEventListener('click', () => selectPlan('execution'));
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => selectPlan(button.dataset.plan));
+        });
         
         // Set a default state on page load
-        selectPlan('strategy');
+        selectPlan('standard');
     </script>
 </body>
 </html>
